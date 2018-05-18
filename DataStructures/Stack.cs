@@ -31,6 +31,11 @@ namespace DataStructures
             return item;
         }
 
+        public void Clear()
+        {
+            _stack.Clear();
+        }
+
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         public IEnumerator<T> GetEnumerator()
