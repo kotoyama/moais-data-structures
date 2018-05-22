@@ -7,8 +7,8 @@ namespace DataStructures
     public class Stack<T> : IEnumerable<T> where T : IComparable<T>
     {
         private readonly List<T> _stack;
-        public int Count => _stack.Count;
-        public bool IsEmpty => _stack.Count == 0;
+        private int Count => _stack.Count;
+        private bool IsEmpty => Count == 0;
 
         public Stack() => _stack = new List<T>();
 
@@ -18,6 +18,8 @@ namespace DataStructures
             foreach (var item in items)
                 Push(item);
         }
+
+        public void Clear() => _stack.Clear();
 
         public void Push(T item) => _stack.Add(item);
 
@@ -29,11 +31,6 @@ namespace DataStructures
             var item = _stack[Count - 1];
             _stack.RemoveAt(Count - 1);
             return item;
-        }
-
-        public void Clear()
-        {
-            _stack.Clear();
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
