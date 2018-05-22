@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace DataStructures
 {
-    public class Node<T>
+    public class QueueNode<T>
     {
         public T Item { get; set; }
-        public Node<T> Next { get; set; }
+        public QueueNode<T> Next { get; set; }
     }
 
     public class Queue<T> : IEnumerable<T> where T : IComparable<T>
     {
-        public Node<T> Head { get; private set; }
-        public Node<T> Tail { get; private set; }
+        public QueueNode<T> Head { get; private set; }
+        public QueueNode<T> Tail { get; private set; }
         public bool IsEmpty => Head == null;
 
         public Queue(IEnumerable<T> items)
@@ -25,10 +25,10 @@ namespace DataStructures
         public void Enqueue(T item)
         {
             if (IsEmpty)
-                Tail = Head = new Node<T> { Item = item, Next = null };
+                Tail = Head = new QueueNode<T> { Item = item, Next = null };
             else
             {
-                var value = new Node<T> { Item = item, Next = null };
+                var value = new QueueNode<T> { Item = item, Next = null };
                 Tail.Next = value;
                 Tail = value;
             }

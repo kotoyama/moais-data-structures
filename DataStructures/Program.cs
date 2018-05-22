@@ -9,7 +9,6 @@ namespace DataStructures
             var stack = new Stack<int>(new [] {1, 2, 3, 4, 5});
             var queue = new Queue<int>(new [] { 10, 1, 2, 3, 4, 5 });
             var heap = new BinaryHeap<int>(new [] { -1, 12, 10, -10 });
-
             stack.Pop();
             stack.Push(14);
             queue.Dequeue();
