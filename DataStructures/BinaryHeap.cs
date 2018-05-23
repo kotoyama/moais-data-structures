@@ -60,7 +60,6 @@ namespace DataStructures
             var smallest = index;
             var left = GetLeftChild(index);
             var right = GetRightChild(index);
-
             while (index < Count / 2)
             {
                 if (left < Count && _heap[left].CompareTo(_heap[index]) < 0)
@@ -76,11 +75,11 @@ namespace DataStructures
 
         public void Clear() => _heap.Clear();
 
-        private int GetParent(int i) => (i - 1) / 2;
+        private static int GetParent(int i) => (i - 1) / 2;
 
-        private int GetLeftChild(int i) => 2 * i + 1;
+        private static int GetLeftChild(int i) => 2 * i + 1;
 
-        private int GetRightChild(int i) => 2 * i + 2;
+        private static int GetRightChild(int i) => 2 * i + 2;
 
         private void Swap(int i, int j)
         {

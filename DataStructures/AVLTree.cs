@@ -2,12 +2,12 @@
 
 namespace DataStructures
 {
-    internal class AvlNode<T>
+    public class AvlNode<T>
     {
         public AvlNode<T> Left { get; set; }
         public AvlNode<T> Right { get; set; }
-        public int Height { get; set; }
         public T Item { get; set; }
+        public int Height { get; set; }
 
         public AvlNode(T item)
         {
@@ -19,7 +19,6 @@ namespace DataStructures
     public class AvlTree<T> : Tree<T> where T : IComparable
     {
         private AvlNode<T> _root;
-        public int Count { get; private set; }
 
         public override bool Contains(T item)
         {
@@ -31,17 +30,11 @@ namespace DataStructures
             }
         }
 
-        public override void Insert(T item)
-        {
-            _root = Insert(_root, item);
-            Count++;
-        }
+        public override void Insert(T item) => _root = Insert(_root, item);
 
         public override void Remove(T item)
         {
-            if (!Contains(item)) return;
-            _root = Remove(_root, item);
-            Count--;
+            if (Contains(item)) _root = Remove(_root, item);
         }
 
         private static void RotateRight(AvlNode<T> node)
