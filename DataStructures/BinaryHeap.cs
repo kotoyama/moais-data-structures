@@ -38,10 +38,7 @@ namespace DataStructures
             return root;
         }
 
-        public T Peek()
-        {
-            return IsEmpty ? throw new InvalidOperationException() : _heap[0];
-        }
+        public T Peek() => IsEmpty ? throw new InvalidOperationException() : _heap[0];
 
         private void HeapifyUp(int index)
         {
