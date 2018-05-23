@@ -18,17 +18,24 @@ namespace DataStructures
 
     public class RandomizedTree<T> : Tree<T> where T : IComparable
     {
-        private RandTreeNode<T> _root;
+        public RandTreeNode<T> Root;
+
+        public int Count { get; private set; }
 
         private static readonly Random _randomizer = new Random();
 
-        public override bool Contains(T item) => TrySearch(_root, item) != null;
+        public override bool Contains(T item) => TrySearch(Root, item) != null;
 
-        public override void Insert(T item) => _root = Insert(_root, item);
+        public override void Insert(T item)
+        {
+            Root = Insert(Root, item);
+            Count++;
+        }
 
         public override void Remove(T item)
         {
-            if (Contains(item)) _root = Remove(_root, item);
+            if (Contains(item)) Root = Remove(Root, item);
+            Count--;
         }
 
         private static RandTreeNode<T> RotateRight(RandTreeNode<T> node)

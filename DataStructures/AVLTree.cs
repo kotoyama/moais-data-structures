@@ -18,23 +18,30 @@ namespace DataStructures
 
     public class AvlTree<T> : Tree<T> where T : IComparable
     {
-        private AvlNode<T> _root;
+        public AvlNode<T> Root;
+
+        public int Count { get; private set; }
 
         public override bool Contains(T item)
         {
             while (true)
             {
-                if (_root == null) return false;
-                if (_root.Item.CompareTo(item) == 0) return true;
-                _root = item.CompareTo(_root.Item) < 0 ? _root.Left : _root.Right;
+                if (Root == null) return false;
+                if (Root.Item.CompareTo(item) == 0) return true;
+                Root = item.CompareTo(Root.Item) < 0 ? Root.Left : Root.Right;
             }
         }
 
-        public override void Insert(T item) => _root = Insert(_root, item);
+        public override void Insert(T item)
+        {
+            Root = Insert(Root, item);
+            Count++;
+        }
 
         public override void Remove(T item)
         {
-            if (Contains(item)) _root = Remove(_root, item);
+            if (Contains(item)) Root = Remove(Root, item);
+            Count--;
         }
 
         private static void RotateRight(AvlNode<T> node)
@@ -101,6 +108,13 @@ namespace DataStructures
             return node;
         }
 
+        private static AvlNode<T> RemoveMin(AvlNode<T> node)
+        {
+            if (node.Left == null) return node.Right;
+            node.Left = RemoveMin(node.Left);
+            return Balance(node);
+        }
+
         private static AvlNode<T> GetMin(AvlNode<T> node)
         {
             if (node == null) return null;
@@ -109,13 +123,6 @@ namespace DataStructures
                 if (node?.Left == null) return node;
                 node = node.Left;
             }
-        }
-
-        private static AvlNode<T> RemoveMin(AvlNode<T> node)
-        {
-            if (node.Left == null) return node.Right;
-            node.Left = RemoveMin(node.Left);
-            return Balance(node);
         }
 
         private static int GetBalanceFactor(AvlNode<T> node) => GetHeight(node?.Right) - GetHeight((node?.Left));
