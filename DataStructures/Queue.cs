@@ -14,6 +14,7 @@ namespace DataStructures
     {
         public QueueNode<T> Head { get; private set; }
         public QueueNode<T> Tail { get; private set; }
+
         public bool IsEmpty => Head == null;
 
         public Queue(IEnumerable<T> items)
