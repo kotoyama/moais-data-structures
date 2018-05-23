@@ -6,8 +6,8 @@ namespace DataStructures
     {
         public RandTreeNode<T> Left { get; set; }
         public RandTreeNode<T> Right { get; set; }
-        public int Size { get; set; }
         public T Item { get; set; }
+        public int Size { get; set; }
 
         public RandTreeNode(T item)
         {
