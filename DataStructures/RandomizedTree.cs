@@ -109,9 +109,7 @@ namespace DataStructures
         {
             if (node == null) return null;
             if (node.Item.Equals(item))
-            {
                 return Join(node.Left, node.Right);
-            }
             if (node.Item.CompareTo(item) > 0)
                 node.Left = Remove(node.Left, item);
             else
