@@ -23,7 +23,7 @@ namespace DataStructures
     {
         private Storage<TKey, TValue> _table;
 
-        public int Count { get; set; }
+        public int Count { get; private set; }
 
         public int Size => _table.Size;
 

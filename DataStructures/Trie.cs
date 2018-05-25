@@ -5,7 +5,6 @@ namespace DataStructures
 {
     public class TrieNode
     {
-        public TrieNode Parent { get; set; }
         public Dictionary<char, TrieNode> Children { get; }
         public string Item { get; }
         public bool IsTerminal { get; set; }
@@ -68,7 +67,7 @@ namespace DataStructures
 
         public void Remove(string word)
         {
-            var node = GetNodeFor(word);
+            var node = GetNode(word);
             if (!node.IsTerminal) return;
             node.IsTerminal = false;
             Count--;
@@ -94,7 +93,7 @@ namespace DataStructures
                 GetAllChildWords(node.Children[child], result);
         }
 
-        private TrieNode GetNodeFor(string word)
+        private TrieNode GetNode(string word)
         {
             var current = _trie;
             foreach (var letter in word)
