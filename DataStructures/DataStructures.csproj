@@ -57,8 +57,9 @@
     <Compile Include="AvlTree.cs" />
     <Compile Include="BinaryHeap.cs" />
     <Compile Include="Graph.cs" />
-    <Compile Include="HashTableClosedAddressing.cs" />
-    <Compile Include="HashTableOpenedAddressing.cs" />
+    <Compile Include="HashTable.cs" />
+    <Compile Include="Maze.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queue.cs" />
