@@ -27,10 +27,9 @@ namespace DataStructures
 
         public int Size => _table.Size;
 
-        public HashTable()
-        {
-            _table = new Storage<TKey, TValue>(42);
-        }
+        public HashTable() => _table = new Storage<TKey, TValue>(42);
+
+        public bool ContainsKey(TKey key) => _table[GetIndex(key)].Any(x => x.Key.Equals(key));
 
         public void Insert(TKey key, TValue value)
         {
@@ -40,8 +39,6 @@ namespace DataStructures
             Count++;
             if (Count / Size >= 2) Rebuild();
         }
-
-        public bool ContainsKey(TKey key) => _table[GetIndex(key)].Any(x => x.Key.Equals(key));
 
         public TValue Get(TKey key)
         {

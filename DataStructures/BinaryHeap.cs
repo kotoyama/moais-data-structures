@@ -10,10 +10,7 @@ namespace DataStructures
         private int Count => _heap.Count;
         private bool IsEmpty => Count == 0;
 
-        public BinaryHeap()
-        {
-            _heap = new List<T>();
-        }
+        public BinaryHeap() => _heap = new List<T>();
 
         public BinaryHeap(IEnumerable<T> items)
         {
